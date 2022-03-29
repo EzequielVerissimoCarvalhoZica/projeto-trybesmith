@@ -16,7 +16,7 @@ class UserService {
     
     console.log(result);
 
-    const SECRET = process.env.JWT_SECRET;
+    const SECRET = process.env.JWT_SECRET || 'secretRuim';
     const jwtConfig = { expiresIn: '1d' };
 
     const token = jwt.sign({ data: { username, classe } }, SECRET as string, jwtConfig);
