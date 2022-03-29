@@ -1,10 +1,19 @@
 import { Request, Response } from 'express';
+import UserService from '../services/UserService';
 
 class UserController {
-  // constructor() {}
+  private service: UserService;
 
-  create = async (_req:Request, res: Response): Promise<void> => {
-    res.end();
+  constructor() {
+    this.service = new UserService();
+  }
+
+  create = async (req:Request, res: Response) => {
+    const { username, classe, level, password } = req.body;
+
+    const token = await this.service.create({ username, classe, level, password });
+
+    return res.status(201).json({ token });
   };
 }
 

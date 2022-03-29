@@ -4,11 +4,11 @@ import validateProduct from './validateProduct';
 
 const routeProduct = express.Router();
 
-const products = new ProductController();
+const Products = new ProductController();
 
 routeProduct
   .route('/')
-  .get(products.findAll)
-  .post(validateProduct, products.create);
+  .get(Products.findAll)
+  .post(validateProduct, Products.create);
 
 export default routeProduct;
