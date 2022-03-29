@@ -11,10 +11,7 @@ class UserService {
   }
 
   create = async ({ username, classe, level, password }: IUser): Promise<string> => {
-    const result = await this.model.create({ username, classe, level, password });
-    console.log('SERVICE');
-    
-    console.log(result);
+    await this.model.create({ username, classe, level, password });
 
     const SECRET = process.env.JWT_SECRET || 'secretRuim';
     const jwtConfig = { expiresIn: '1d' };

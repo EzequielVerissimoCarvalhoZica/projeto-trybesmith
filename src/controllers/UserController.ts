@@ -12,10 +12,7 @@ class UserController {
     const { username, classe, level, password } = req.body;
 
     const token = await this.service.create({ username, classe, level, password });
-    console.log('CONTROLLER');
 
-    console.log(token);
-    
     return res.status(201).json({ token });
   };
 }
