@@ -1,9 +1,12 @@
 import express from 'express';
+import OrderController from '../controllers/OrderController';
 
 const routeOrder = express.Router();
 
+const Order = new OrderController();
+
 routeOrder
   .route('/')
-  .post();
+  .get(Order.findAll);
 
 export default routeOrder;
