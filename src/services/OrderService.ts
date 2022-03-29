@@ -11,7 +11,7 @@ class OrderService {
   findAll = async () => {
     const result = await this.model.findAll();
     
-    const orders = result.map((item) => ({ ...item, products: [item.products] }));
+    const orders = result.map((ordel) => ({ ...ordel, products: [ordel.products] }));
     return orders;
   };
 

@@ -12,7 +12,10 @@ class UserModel {
     const query = `INSERT INTO Trybesmith.Users
     (username, classe, level, password) VALUES(?, ?, ?, ?);`;
 
-    await this.connection.execute(query, [username, classe, level, password]);
+    const result = await this.connection.execute(query, [username, classe, level, password]);
+    console.log('MODEL');
+    
+    console.log(result);
   };
 }
 
