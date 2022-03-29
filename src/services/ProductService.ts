@@ -15,7 +15,11 @@ class ProductService {
     return products as IProduct[];
   };
 
-  create = async (): Promise<void> => {};
+  create = async ({ name, amount }: IProduct): Promise<IProduct> => {
+    const result = await this.model.create({ name, amount });
+
+    return result;
+  };
 }
 
 export default ProductService;

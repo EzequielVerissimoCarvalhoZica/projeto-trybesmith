@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import ProductService from '../services/ProductService';
 
 class ProductController {
-  service: ProductService;
+  private service: ProductService;
 
   constructor() {
     this.service = new ProductService();
@@ -11,11 +11,15 @@ class ProductController {
   findAll = async (_req:Request, res: Response) => {
     const products = await this.service.findAll();
   
-    res.status(200).json(products);
+    return res.status(200).json(products);
   };
 
-  create = async (_req:Request, res: Response): Promise<void> => {
-    res.end();
+  create = async (req:Request, res: Response) => {
+    const { name, amount } = req.body;
+
+    const products = await this.service.create({ name, amount });
+
+    return res.status(201).json({ item: products });
   };
 }
 
